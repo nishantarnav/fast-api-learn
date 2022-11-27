@@ -4,15 +4,17 @@ on: [push,pull_request]
 
 jobs:
   job1: 
+    environment:
+      name: testing
     env:
-      DATABASE_HOSTNAME=localhost
-      DATABASE_PORT=5432
-      DATABASE_PASSWORD= Z#geforce73
-      DATABASE_NAME=fastapi
-      DATABASE_USERNAME=postgres
-      SECRET_KEY=dbjbf32bri32fbb2rkb9832fb828fh8392fb948h983bf89b34bf43fn38f93
-      ALGORITHM=HS256
-      ACCESS_TOKEN_EXPIRE_MINUTES=60
+      DATABASE_HOSTNAME: ${{secrets.DATABASE_HOSTNAME}}
+      DATABASE_PORT: ${{secrets.DATABASE_PORT}}
+      DATABASE_PASSWORD: ${{secrets.DATABASE_PASSWORD}}
+      DATABASE_NAME: ${{secrets.DATABASE_NAME}}
+      DATABASE_USERNAME: ${{secrets.DATABASE_USERNAME}}
+      SECRET_KEY: ${{secrets.SECRET_KEY}}
+      ALGORITHM: ${{secrets.ALGORITHM}}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${{secrets.ACCESS_TOKEN_EXPIRE_MINUTES}}
     runs-on: windows-2022
     steps:
       - name: pulling git repo
